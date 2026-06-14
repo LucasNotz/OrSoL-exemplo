@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        OrSoL - Organização dos Sonhos Lúcidos
+    </title>
+
+    <meta name="description"
+          content="OrSoL é uma comunidade dedicada ao estudo dos sonhos lúcidos, relatos, técnicas, referências e pesquisa da experiência onírica.">
+
+    <meta name="keywords"
+          content="sonhos lúcidos, sonho lúcido, sonhos, diário de sonhos, oneironautica, exploração dos sonhos, consciência, sonhos">
+
+    <meta name="author"
+          content="OrSoL">
+
+    <meta name="robots"
+          content="index, follow">
+
+    <meta name="language"
+          content="pt-BR">
+
+    <meta name="theme-color"
+          content="#1a1630">
+    <link rel="icon" href="favicon.png">
+    <link rel="canonical" href="https://orsol.online/">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="wrapper">
+
+<div id="header">
+    <h1>OrSoL</h1>
+    <p>A Organização dos Sonhos Lúcidos</p>
+</div>
+
+<div id="nav">
+    <a href="index.html">Página Principal</a>
+    <a href="informacoes.html">HUB de Informações</a>
+    <a href="projetos.html">Projetos Futuros</a>
+    <a href="participe.html">Participe</a>
+    <a href="sobre.html">Sobre Nós</a>
+    
+    
+</div>
+
+<div id="hero">
+
+    <div id="hero-left">
+
+        <h2>Descubra como desvendar o mundo dos seus sonhos.</h2>
+        <h3><span id="count">Loading...</span>
+
+<script>
+fetch('count.php')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('count').textContent = data;
+    });
+</script> já enviaram um Dream Report!</h3>
+
+        <p>
+            
+            A OrSoL é uma iniciativa que visa disponibilizar aos interessados as informações necessárias para começar a explorar o mundo dos sonhos, além de contribuir para o desenvolvimento dessa área de pesquisa.
+        </p>
+
+        <p>
+            OrSoL técnicamente não é uma organização, mas sim uma iniciativa benevolente.
+        </p>
+
+        <a href="resumo.html" class="button">Resumo da Ópera</a>
+        <a href="porque-tentar.html" class="button">Por que tentar</a>
+        
+
+        
+        <section id="apod">
+    <h2 id="apod-title">Loading...</h2>
+
+    <img
+        id="apod-image"
+        style="max-width:100%; display:none;"
+        alt=""
+    >
+
+    <p id="apod-description"></p>
+</section>
+
+        <script>
+
+fetch('backend/apod.php')
+    .then(response => response.json())
+    .then(data => {
+
+        document.getElementById('apod-title')
+            .textContent = data.title;
+
+        document.getElementById('apod-description')
+            .textContent = data.explanation;
+
+        if (data.media_type === 'image') {
+
+            const image =
+                document.getElementById('apod-image');
+
+            image.src = data.url;
+            image.alt = data.title;
+            image.style.display = 'block';
+        }
+
+    })
+    .catch(error => {
+
+        document.getElementById('apod-title')
+            .textContent = 'Unable to load APOD';
+
+        console.error(error);
+
+    });
+
+</script>
+
+    </div>
+
+    
+
+</div>
+
+
+
+<div id="footer">
+    © 2026 OrSoL
+</div>
+
+</div>
+
+</body>
+</html>
